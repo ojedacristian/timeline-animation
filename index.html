@@ -44,8 +44,8 @@
               </div>
             </div>
             <div class="h-1/2 mx-auto mt-20">
-              <div class="line bg-yellow-50 px-4 opacity-80">
-                <span>Croix-Rouge internationale</span>
+              <div class="line bg-yellow-50 px-4 opacity-80 leading" style="clip-path: polygon(0 0, 0% 0, 0% 100%, 0% 100%);">
+                <span class="line leading-normal" style="clip-path: polygon(0 0, 0% 0, 0% 100%, 0% 100%);">Croix-Rouge internationale</span>
               </div>
             </div>
           </div>
@@ -68,13 +68,13 @@
       let racesWidth = races.scrollWidth;
       return -(racesWidth - window.innerWidth)
     }
-
+    console.log('scrollAmount',getScrollAmount())
     let tl = gsap.timeline({
       scrollTrigger: {
         trigger: '.wrapper',
         start: 'top top',
         pin: true,
-        end: () => `+=${getScrollAmount() * -1}`,
+        end: () => `+=${getScrollAmount() * -1 * 2}`,
         scrub: true,
         markers: true,
       }
@@ -82,19 +82,19 @@
     tl
       .from('.timeline', {
         x:'-100%',
-        duration: 10
+        duration: 3
       })
       .to('.races',{
         x: getScrollAmount,
-      }, '-=6')
+      }, '-=2')
       .from('.letters', {
       opacity: 0,
       y: '100',
       stagger: 0.05
     })
-      .from('.line', {
-        x: -100,
-        opacity: 0
+      .to('.line', {
+        'clip-path': 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+        stagger: 0.2
       })
       .from('.character', {
         opacity: 0,
@@ -109,7 +109,7 @@
     // LENIS
     const lenis = new Lenis()
     lenis.on('scroll', (e) => {
-      console.log(e)
+      // console.log(e)
     })
 
     lenis.on('scroll', ScrollTrigger.update)

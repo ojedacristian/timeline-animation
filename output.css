@@ -677,10 +677,6 @@ video {
   z-index: 10;
 }
 
-.z-20 {
-  z-index: 20;
-}
-
 .z-50 {
   z-index: 50;
 }
@@ -857,20 +853,20 @@ video {
   height: 100vh;
 }
 
-.h-\[150vh\] {
-  height: 150vh;
+.h-\[50vh\] {
+  height: 50vh;
 }
 
-.h-\[screen\] {
-  height: screen;
+.h-\[75vh\] {
+  height: 75vh;
+}
+
+.w-3\/4 {
+  width: 75%;
 }
 
 .w-3\/5 {
   width: 60%;
-}
-
-.w-4 {
-  width: 1rem;
 }
 
 .w-52 {
@@ -897,24 +893,8 @@ video {
   width: 100%;
 }
 
-.w-\[150\%\] {
-  width: 150%;
-}
-
-.w-\[150vw\] {
-  width: 150vw;
-}
-
-.w-\[150svw\] {
-  width: 150svw;
-}
-
-.w-\[180svw\] {
-  width: 180svw;
-}
-
-.w-3\/4 {
-  width: 75%;
+.w-\[300vw\] {
+  width: 300vw;
 }
 
 .flex-shrink {
@@ -2014,6 +1994,11 @@ video {
   padding-right: 1rem;
 }
 
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -2164,6 +2149,10 @@ video {
 .stacked-fractions {
   --tw-numeric-fraction: stacked-fractions;
   font-variant-numeric: var(--tw-ordinal) var(--tw-slashed-zero) var(--tw-numeric-figure) var(--tw-numeric-spacing) var(--tw-numeric-fraction);
+}
+
+.leading-normal {
+  line-height: 1.5;
 }
 
 .text-\[\#336699\]\/\[\.35\] {
