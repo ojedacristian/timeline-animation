@@ -6,32 +6,35 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./output.css">
-  <title>TimeLine Animation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">  <title>TimeLine Animation</title>
 </head>
 
-<body class="overflow-hidden">
+<body class="overflow-hidden font-oswald">
   <main class="relative">
     <!-- <main class="flex"> -->
 
-    <section class="w-full h-screen bg-orange-200 flex items-center justify-center">
-      <h1 class="text-5xl text-blue-900">Justitia y Pace</h1>
+    <section class="w-full h-screen bg-blue-950 flex items-center justify-center">
+      <h1 class="text-5xl text-brand-beige uppercase font-bold">Justitia y Pace</h1>
     </section>
     <div class="wrapper w-[200vw]">
       <div class="races flex flex-nowrap">
-        <div class="timeline h-4 bg-red-700 text-red-400 w-3/4 absolute z-50 top-1/2"></div>
-        <section class="slide-1 w-full h-screen bg-orange-200 flex items-center justify-center relative">
-            <!-- <div class="timeline h-4 bg-red-700 text-red-400 w-full absolute z-50"></div> -->
+        <div class="timeline h-4 bg-brand-red text-red-400 w-3/4 absolute z-50 top-1/2"></div>
+        <section class="slide-1 w-full h-screen bg-brand-beige flex items-center justify-center relative">
+          <!-- <div class="timeline h-4 bg-red-700 text-red-400 w-full absolute z-50"></div> -->
         </section>
         <!-- <section class="w-full h-screen">
           asdadasdsad
         </section> -->
-        <section class="slide-2 w-full text-red-700 text-4xl font-semibold h-screen bg-orange-200 relative">
-            <!-- <div class="timeline2 h-4 bg-red-700 text-red-400 w-full absolute z-50"></div> -->
+        <section class="slide-2 w-full text-brand-red text-4xl font-semibold h-screen bg-brand-beige relative">
+          <!-- <div class="timeline2 h-4 bg-red-700 text-red-400 w-full absolute z-50"></div> -->
           <img src="./public/oldmap.png" class="opacity-10 w-full h-full relative z-0" alt="">
           <div class="absolute top-0 left-0 z-10 h-screen flex flex-col w-3/5">
             <div class="h-1/2 flex justify-center items-end">
-              <div>
-                <p class="text-yellow-600 text-9xl font-bold flex" id="year">
+              <div class="pb-8">
+                <p class="text-brand-brown text-9xl font-bold flex drop-shadow-[-4px_-4px_0px_rgba(255,255,255,0.5)]"
+                  id="year">
                   <span class="letters">1</span>
                   <span class="letters">8</span>
                   <span class="letters">6</span>
@@ -39,20 +42,21 @@
                 </p>
               </div>
               <div class="flex gap-4">
-                <img src="./public/henrydunant.jpg" class="w-52 character" alt="">
-                <p class="text-yellow-600 uppercase text-xl font-semibold name">Henry <br>Dunant</p>
+                <img src="./public/henry.png" class="character" alt="">
+                <p class="text-brand-brown uppercase text-2xl font-semibold name">Henry <br>Dunant</p>
               </div>
             </div>
-            <div class="h-1/2 mx-auto mt-20">
-              <div class="line bg-yellow-50 px-4 opacity-80 leading" style="clip-path: polygon(0 0, 0% 0, 0% 100%, 0% 100%);">
-                <span class="line leading-normal" style="clip-path: polygon(0 0, 0% 0, 0% 100%, 0% 100%);">Croix-Rouge internationale</span>
+            <div class="h-1/2 mx-auto">
+              <div class="mt-10 line bg-[#eae9e3] px-4 leading" style="clip-path: polygon(0 0, 0% 0, 0% 100%, 0% 100%);">
+                <span class="line leading-normal" style="clip-path: polygon(0 0, 0% 0, 0% 100%, 0% 100%);">Croix-Rouge
+                  internationale</span>
               </div>
             </div>
           </div>
         </section>
       </div>
     </div>
-    <section class="w-full h-screen bg-orange-200 flex items-center justify-center">
+    <section class="w-full h-screen bg-brand-beige flex items-center justify-center">
       <h1 class="text-5xl text-blue-900">Other Section</h1>
     </section>
   </main>
@@ -68,7 +72,7 @@
       let racesWidth = races.scrollWidth;
       return -(racesWidth - window.innerWidth)
     }
-    console.log('scrollAmount',getScrollAmount())
+    console.log('scrollAmount', getScrollAmount())
     let tl = gsap.timeline({
       scrollTrigger: {
         trigger: '.wrapper',
@@ -76,22 +80,22 @@
         pin: true,
         end: () => `+=${getScrollAmount() * -1 * 2}`,
         scrub: true,
-        markers: true,
+        // markers: true,
       }
     })
     tl
       .from('.timeline', {
-        x:'-100%',
+        x: '-100%',
         duration: 3
       })
-      .to('.races',{
+      .to('.races', {
         x: getScrollAmount,
       }, '-=2')
       .from('.letters', {
-      opacity: 0,
-      y: '100',
-      stagger: 0.05
-    })
+        opacity: 0,
+        y: '100',
+        stagger: 0.05
+      })
       .to('.line', {
         'clip-path': 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
         stagger: 0.2
