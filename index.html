@@ -10,60 +10,95 @@
 </head>
 
 <body>
-  <div class="border-4 absolute top-1/2 border-red-700 z-20"></div>
-  <!-- <main class="flex flex-nowrap w-[200vw]"> -->
-  <main class="flex">
+  <main class="relative">
+    <!-- <main class="flex"> -->
 
-    <!-- <section class="w-full h-screen bg-orange-200">
-        <h1 class="text-3xl text-red-500">Section 1</h1>
-      </section> -->
-    <section class="w-full text-red-700 text-4xl font-semibold h-screen bg-orange-200 relative">
-      <img src="./public/oldmap.png" class="opacity-10 w-full h-full relative z-0" alt="">
-      <div class="absolute top-0 left-0 z-10 h-screen flex flex-col w-3/5">
-        <div class="h-1/2 flex justify-center items-end">
-          <div>
-            <p class="text-yellow-600 text-9xl font-bold flex" id="year">
-              <span class="letters">1</span>
-              <span class="letters">8</span>
-              <span class="letters">6</span>
-              <span class="letters">3</span>
-            </p>
-          </div>
-          <div class="flex gap-4">
-            <img src="./public/henrydunant.jpg" class="w-52 character" alt="">
-            <p class="text-yellow-600 uppercase text-xl font-semibold name">Henry <br>Dunant</p>
-          </div>
-        </div>
-        <div class="h-1/2 mx-auto mt-20">
-          <div class="line bg-yellow-50 px-4 opacity-80">
-            <span>Croix-Rouge internationale</span>
-          </div>
-        </div>
-      </div>
+    <section class="w-full h-screen bg-orange-200 flex items-center justify-center">
+      <h1 class="text-5xl text-blue-900">Justitia y Pace</h1>
     </section>
+    <div class="wrapper">
+      <section class="slide-1 w-full h-4 bg-orange-200 flex items-center justify-center">
+        <div class="timeline border-4 relative border-red-700 z-20 w-[100%]"></div>
+      </section>
+      <section class="slide-2 w-full text-red-700 text-4xl font-semibold h-screen bg-orange-200 relative">
+        <img src="./public/oldmap.png" class="opacity-10 w-full h-full relative z-0" alt="">
+        <div class="absolute top-0 left-0 z-10 h-screen flex flex-col w-3/5">
+          <div class="h-1/2 flex justify-center items-end">
+            <div>
+              <p class="text-yellow-600 text-9xl font-bold flex" id="year">
+                <span class="letters">1</span>
+                <span class="letters">8</span>
+                <span class="letters">6</span>
+                <span class="letters">3</span>
+              </p>
+            </div>
+            <div class="flex gap-4">
+              <img src="./public/henrydunant.jpg" class="w-52 character" alt="">
+              <p class="text-yellow-600 uppercase text-xl font-semibold name">Henry <br>Dunant</p>
+            </div>
+          </div>
+          <div class="h-1/2 mx-auto mt-20">
+            <div class="line bg-yellow-50 px-4 opacity-80">
+              <span>Croix-Rouge internationale</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="w-full h-screen bg-orange-200 flex items-center justify-center">
+        <h1 class="text-5xl text-blue-900">Other Section</h1>
+      </section>
+    </div>
   </main>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollTrigger/1.0.6/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.36/dist/lenis.min.js"></script>
   <script>
-    let tl = gsap.timeline()
-
-    tl.from('.letters', {
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '.wrapper',
+        start: 'top top',
+        pin: true,
+        end: "+=1200px",
+        scrub: true,
+        markers: true,
+      }
+    })
+    tl
+      .from('.timeline', {
+        x:'-100%'
+      })
+      .from('.letters', {
       opacity: 0,
       y: '100',
       stagger: 0.05
     })
-    .from('.line', {
-      x:-100,
-      opacity: 0
+      .from('.line', {
+        x: -100,
+        opacity: 0
+      })
+      .from('.character', {
+        opacity: 0,
+        scale: 0,
+      })
+      .from('.name', {
+        opacity: 0,
+        y: -50
+      })
+
+
+    // LENIS
+    const lenis = new Lenis()
+    lenis.on('scroll', (e) => {
+      console.log(e)
     })
-    .from('.character', {
-      opacity: 0,
-      scale: 0,
+
+    lenis.on('scroll', ScrollTrigger.update)
+
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000)
     })
-    .from('.name', {
-      opacity: 0,
-      y:-50
-    })
+
+    gsap.ticker.lagSmoothing(0)
 
   </script>
   <!-- <script type="module" src="/main.js"></script> -->
