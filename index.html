@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./output.css">
+  <title>TimeLine Animation</title>
+</head>
+
+<body>
+  <div class="border-4 absolute top-1/2 border-red-700 z-20"></div>
+  <!-- <main class="flex flex-nowrap w-[200vw]"> -->
+  <main class="flex">
+
+    <!-- <section class="w-full h-screen bg-orange-200">
+        <h1 class="text-3xl text-red-500">Section 1</h1>
+      </section> -->
+    <section class="w-full text-red-700 text-4xl font-semibold h-screen bg-orange-200 relative">
+      <img src="./public/oldmap.png" class="opacity-10 w-full h-full relative z-0" alt="">
+      <div class="absolute top-0 left-0 z-10 h-screen flex flex-col w-3/5">
+        <div class="h-1/2 flex justify-center items-end">
+          <div>
+            <p class="text-yellow-600 text-9xl font-bold flex" id="year">
+              <span class="letters">1</span>
+              <span class="letters">8</span>
+              <span class="letters">6</span>
+              <span class="letters">3</span>
+            </p>
+          </div>
+          <div class="flex gap-4">
+            <img src="./public/henrydunant.jpg" class="w-52 character" alt="">
+            <p class="text-yellow-600 uppercase text-xl font-semibold name">Henry <br>Dunant</p>
+          </div>
+        </div>
+        <div class="h-1/2 mx-auto mt-20">
+          <div class="line bg-yellow-50 px-4 opacity-80">
+            <span>Croix-Rouge internationale</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollTrigger/1.0.6/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+    let tl = gsap.timeline()
+
+    tl.from('.letters', {
+      opacity: 0,
+      y: '100',
+      stagger: 0.05
+    })
+    .from('.line', {
+      x:-100,
+      opacity: 0
+    })
+    .from('.character', {
+      opacity: 0,
+      scale: 0,
+    })
+    .from('.name', {
+      opacity: 0,
+      y:-50
+    })
+
+  </script>
+  <!-- <script type="module" src="/main.js"></script> -->
+</body>
+
+</html>

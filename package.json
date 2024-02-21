@@ -1,0 +1,15 @@
+{
+  "name": "timeline",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite && pnpm dlx tailwindcss -i ./main.css -o ./output.css --watch",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1",
+    "vite": "^5.1.0"
+  }
+}
