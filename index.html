@@ -18,13 +18,15 @@
     </section>
     <div class="wrapper w-[200vw]">
       <div class="races flex flex-nowrap">
+        <div class="timeline h-4 bg-red-700 text-red-400 w-3/4 absolute z-50 top-1/2"></div>
         <section class="slide-1 w-full h-screen bg-orange-200 flex items-center justify-center relative">
-            <div class="timeline h-4 bg-red-700 text-red-400 w-[180svw] absolute z-50"></div>
+            <!-- <div class="timeline h-4 bg-red-700 text-red-400 w-full absolute z-50"></div> -->
         </section>
         <!-- <section class="w-full h-screen">
           asdadasdsad
         </section> -->
         <section class="slide-2 w-full text-red-700 text-4xl font-semibold h-screen bg-orange-200 relative">
+            <!-- <div class="timeline2 h-4 bg-red-700 text-red-400 w-full absolute z-50"></div> -->
           <img src="./public/oldmap.png" class="opacity-10 w-full h-full relative z-0" alt="">
           <div class="absolute top-0 left-0 z-10 h-screen flex flex-col w-3/5">
             <div class="h-1/2 flex justify-center items-end">
@@ -79,11 +81,12 @@
     })
     tl
       .from('.timeline', {
-        x:'-100%'
+        x:'-100%',
+        duration: 10
       })
       .to('.races',{
-        x: getScrollAmount
-      })
+        x: getScrollAmount,
+      }, '-=6')
       .from('.letters', {
       opacity: 0,
       y: '100',
