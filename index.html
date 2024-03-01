@@ -17,11 +17,20 @@
     <!-- <main class="flex"> -->
 
     <section class="w-full h-screen bg-blue-950 flex items-center justify-center">
-      <div class="text-5xl md:text-9xl text-brand-beige uppercase font-semibold flex gap-8 text-center">
-        <p class="words">Justitia</p>
-        <p class="words text-brand-brown">&</p>
-        <p class="words">Pace</p>
-      </h1>
+      <div class="w-screen h-screen bg-blue-950">
+        <img class="w-screen mainimg" src="./public/main2.jpg" alt="">
+      </div>
+      <div class="absolute z-0">
+        <h1 class="text-5xl md:text-9xl text-brand-beige uppercase font-semibold flex gap-8 text-center">
+          <p class="words">Justitia</p>
+          <p class="words text-brand-brown">&</p>
+          <p class="words">Pace</p>
+        </h1>
+        <div class="flex justify-center items-center flex-col gap-1 mt-12">
+          <h2 class="sub bg-brand-brown text-white text-xl text-center" style="clip-path: polygon(0 0, 0% 0, 0% 100%, 0% 100%);">LE 150 ANNIVERSAIRE DE</h2><br>
+          <h2 class="sub bg-brand-brown text-white text-xl text-center" style="clip-path: polygon(0 0, 0% 0, 0% 100%, 0% 100%);">L'INSTITUT DE DROIT INTERNATIONAL</h2>
+        </div>
+      </div>
     </section>
     <div class="wrapper w-[200vw]">
       <div class="races flex flex-nowrap">
@@ -88,11 +97,32 @@
     }
     console.log('scrollAmount', getScrollAmount())
 
-    gsap.from('.words', {
+    gsap
+    .from('.mainimg', {
+      y: 0,
+      scale:2,
+      opacity: 0,
+      duration: 2,
+      ease: "expo.out",
+    })
+    gsap
+    .from('.words', {
       y: 100,
       opacity: 0,
-      stagger: 0.2
+      stagger: 0.3,
+      delay: 1
     })
+    gsap
+    .to('.sub', {
+        'clip-path': 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+        stagger: 0.5,
+        delay: 2,
+        duration: 1,
+        ease: "expo.inOut",
+      })
+
+
+
     let tl = gsap.timeline({
       scrollTrigger: {
         trigger: '.wrapper',
